@@ -4,8 +4,7 @@ init();
 render();
 
 function init() {
-    const container = document.createElement('div');
-    document.body.appendChild(container);
+    const container = document.getElementById('ugol');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.set(0, 0, 10);
