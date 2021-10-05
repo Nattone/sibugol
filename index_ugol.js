@@ -1,7 +1,7 @@
 let mixer, camera, scene, renderer, clock;
 
 init();
-// animate();
+render();
 
 function init() {
     const container = document.createElement('div');
@@ -69,14 +69,6 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-
-    if (mixer) mixer.update(clock.getDelta());
-
-    render();
 }
 
 function render() {
