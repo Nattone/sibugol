@@ -1,6 +1,7 @@
-let camera, scene, renderer, clock;
+let mixer, camera, scene, renderer, clock;
 
 init();
+animate();
 
 function init() {
 
@@ -8,7 +9,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(0, 0, 5);
+    camera.position.set(0, 0, 10);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -51,7 +52,7 @@ function init() {
     //
 
     const loader = new THREE.GLTFLoader();
-    loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
+    loader.load('./models/SimpleSkinning.gltf', function (gltf) {
 
         scene.add(gltf.scene);
 
@@ -60,6 +61,10 @@ function init() {
             if (child.isSkinnedMesh) child.castShadow = true;
 
         });
+
+        mixer = new THREE.AnimationMixer(gltf.scene);
+        mixer.clipAction(gltf.animations[0]).play();
+
     });
 
     //
@@ -69,6 +74,16 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
+}
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    if (mixer) mixer.update(clock.getDelta());
+
+    render();
+
 }
 
 function render() {
