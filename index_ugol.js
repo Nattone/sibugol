@@ -1,10 +1,9 @@
 let mixer, camera, scene, renderer, clock;
 
 init();
-animate();
+// animate();
 
 function init() {
-
     const container = document.createElement('div');
     document.body.appendChild(container);
 
@@ -18,7 +17,6 @@ function init() {
     clock = new THREE.Clock();
 
     // ground
-
     const geometry = new THREE.PlaneGeometry(500, 500);
     const material = new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false });
 
@@ -35,7 +33,6 @@ function init() {
     scene.add(grid);
 
     // lights
-
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
     hemiLight.position.set(0, 200, 0);
     scene.add(hemiLight);
@@ -50,7 +47,6 @@ function init() {
     scene.add(dirLight);
 
     //
-
     const loader = new THREE.GLTFLoader();
     loader.load('./models/SimpleSkinning.gltf', function (gltf) {
 
@@ -68,7 +64,6 @@ function init() {
     });
 
     //
-
     renderer = new THREE.WebGLRenderer();
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -77,17 +72,13 @@ function init() {
 }
 
 function animate() {
-
     requestAnimationFrame(animate);
 
     if (mixer) mixer.update(clock.getDelta());
 
     render();
-
 }
 
 function render() {
-
     renderer.render(scene, camera);
-
 }
