@@ -27,7 +27,7 @@ function init() {
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render); // use if there is no animation loop
-    controls.minDistance = 2;
+    controls.minDistance = 1;
     controls.maxDistance = 10;
     controls.target.set(0, 0, - 0.2);
     controls.update();
