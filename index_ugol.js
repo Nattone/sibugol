@@ -3,9 +3,10 @@ const loader = new THREE.GLTFLoader();
 // Load a glTF resource
 loader.load(
     // resource URL
-    'scene.gltf',
+    'models/ugol glTF/scene.gltf',
     // called when the resource is loaded
     function (gltf) {
+        console.log('loaded');
 
         scene.add(gltf.scene);
 
