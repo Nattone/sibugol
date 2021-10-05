@@ -3,7 +3,7 @@ const loader = new THREE.GLTFLoader();
 // Load a glTF resource
 loader.load(
     // resource URL
-    'models/ugol glTF/scene.gltf',
+    './models/SimpleSkinning.gltf',
     // called when the resource is loaded
     function (gltf) {
         console.log('loaded');
@@ -20,15 +20,11 @@ loader.load(
 
     // called while loading is progressing
     function (xhr) {
-
         console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
     },
     // called when loading has errors
     function (error) {
-
         console.log('An error happened');
-
     }
 );
 
