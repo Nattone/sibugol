@@ -7,7 +7,7 @@ function init() {
     const container = document.getElementById('ugol');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(0, 0, 5);
+    camera.position.set(400, 200, 0);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -30,18 +30,16 @@ function init() {
     scene.add(grid);
 
     // lights
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
-    hemiLight.position.set(0, 200, 0);
-    scene.add(hemiLight);
+    const dirLight1 = new THREE.DirectionalLight(0xffffff);
+    dirLight1.position.set(1, 1, 1);
+    scene.add(dirLight1);
 
-    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
-    dirLight.position.set(0, 20, 10);
-    dirLight.castShadow = true;
-    dirLight.shadow.camera.top = 18;
-    dirLight.shadow.camera.bottom = - 10;
-    dirLight.shadow.camera.left = - 12;
-    dirLight.shadow.camera.right = 12;
-    scene.add(dirLight);
+    const dirLight2 = new THREE.DirectionalLight(0x002288);
+    dirLight2.position.set(- 1, - 1, - 1);
+    scene.add(dirLight2);
+
+    const ambientLight = new THREE.AmbientLight(0x222222);
+    scene.add(ambientLight);
 
     //
     const loader = new THREE.GLTFLoader();
@@ -57,10 +55,42 @@ function init() {
     container.appendChild(renderer.domElement);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enablePan = false;
     controls.minDistance = 5;
     controls.maxDistance = 50;
 
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.listenToKeyEvents(window); // optional
+
+    controls.addEventListener('change', render); // call this only in static scenes (i.e., if there is no animation loop)
+
+    // controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
+    // controls.dampingFactor = 0.05;
+
+    controls.screenSpacePanning = false;
+    // controls.enablePan = false;
+
+    controls.minDistance = 100;
+    controls.maxDistance = 500;
+
+    controls.maxPolarAngle = Math.PI / 2;
+
+
+    window.addEventListener('resize', onWindowResize);
+}
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    controls.update(); // only required if controls.enableDamping = true, or if controls.autoRotate = true
+
+    render();
 }
 
 function render() {
