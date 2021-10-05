@@ -4,6 +4,7 @@ init();
 animate();
 
 function init() {
+
     const container = document.createElement('div');
     document.body.appendChild(container);
 
@@ -50,7 +51,7 @@ function init() {
 
     //
 
-    const loader = new GLTFLoader();
+    const loader = new THREE.GLTFLoader();
     loader.load('./models/SimpleSkinning.gltf', function (gltf) {
 
         scene.add(gltf.scene);
