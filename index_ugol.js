@@ -1,4 +1,4 @@
-let stats, mixer, camera, scene, renderer, clock;
+let mixer, camera, scene, renderer, clock;
 
 init();
 animate();
@@ -77,9 +77,6 @@ function init() {
 
     //
 
-    stats = new Stats();
-    container.appendChild(stats.dom);
-
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
     controls.minDistance = 5;
@@ -94,7 +91,6 @@ function animate() {
     if (mixer) mixer.update(clock.getDelta());
 
     render();
-    stats.update();
 
 }
 
