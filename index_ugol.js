@@ -37,5 +37,8 @@ const renderer = new THREE.WebGLRenderer();
 
 scene.background = new THREE.Color(0x000fff); // фон для сцены
 renderer.setSize(window.innerWidth, window.innerHeight); //установка размера = текущ.ширина и текущ.высота
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.render(scene, camera);
 document.body.appendChild(renderer.domElement); // в эл-т body вставляем рендер
 camera.position.z = 5;
