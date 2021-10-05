@@ -14,7 +14,7 @@ function init() {
 
     //
     const loader = new THREE.GLTFLoader();
-    loader.load('./models/ugol/scene.gltf', function (gltf) {
+    loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         scene.add(gltf.scene);
 
         render();
