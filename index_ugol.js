@@ -23,7 +23,7 @@ function init() {
     const material = new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false });
 
     const ground = new THREE.Mesh(geometry, material);
-    ground.position.set(0, - 5, 0);
+    ground.position.set(0, 0, 0);
     ground.rotation.x = - Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
