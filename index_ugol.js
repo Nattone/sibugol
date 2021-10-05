@@ -16,6 +16,7 @@ loader.load(
         gltf.asset; // Object
 
     },
+
     // called while loading is progressing
     function (xhr) {
 
@@ -29,3 +30,12 @@ loader.load(
 
     }
 );
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight); // 70 - насколько широко видит камера
+const renderer = new THREE.WebGLRenderer();
+
+scene.background = new THREE.Color(0x000fff); // фон для сцены
+renderer.setSize(window.innerWidth, window.innerHeight); //установка размера = текущ.ширина и текущ.высота
+document.body.appendChild(renderer.domElement); // в эл-т body вставляем рендер
+camera.position.z = 5;

@@ -205,12 +205,12 @@
   "buffers": [
     {
       "byteLength": 5682840,
-      "uri": "scene.gltf"
+      "uri": "scene.bin"
     }
   ],
   "images": [
     {
-      "uri": "textures.jpg"
+      "uri": "textures.jpeg"
     }
   ],
   "materials": [
