@@ -29,6 +29,20 @@ function init() {
     grid.material.transparent = true;
     scene.add(grid);
 
+    // lights
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+    hemiLight.position.set(0, 200, 0);
+    scene.add(hemiLight);
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    dirLight.position.set(0, 20, 10);
+    dirLight.castShadow = true;
+    dirLight.shadow.camera.top = 18;
+    dirLight.shadow.camera.bottom = - 10;
+    dirLight.shadow.camera.left = - 12;
+    dirLight.shadow.camera.right = 12;
+    scene.add(dirLight);
+
     //
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
