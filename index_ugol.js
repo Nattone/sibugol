@@ -9,7 +9,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(0, 0, 0);
+    camera.position.set(0, 0, 5);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
