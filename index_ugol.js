@@ -14,8 +14,16 @@ function init() {
 
     //
     const loader = new THREE.GLTFLoader();
-    loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
+    loader.load('./models/DamagedHelmet/DamagedHelmet.gltf', function (gltf) {
+        gltf.scene.traverse(function (child) {
+            if (child.isMesh) {
+                roughnessMipmapper.generateMipmaps(child.material);
+            }
+        });
         scene.add(gltf.scene);
+        roughnessMipmapper.dispose();
+
+        render();
     });
 
     //
@@ -34,8 +42,6 @@ function init() {
     window.addEventListener('resize', onWindowResize);
 }
 
-
-
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -43,6 +49,7 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     render();
+
 }
 
 function render() {
