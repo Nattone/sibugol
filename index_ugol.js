@@ -7,7 +7,7 @@ function init() {
     const container = document.getElementById('ugol');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(0, 0, 5);
+    camera.position.set(0, 0, 500);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -60,7 +60,6 @@ function init() {
     controls.enablePan = false;
     controls.minDistance = 5;
     controls.maxDistance = 50;
-
 }
 
 function render() {
