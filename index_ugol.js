@@ -7,7 +7,7 @@ function init() {
     const container = document.getElementById('ugol');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(0, 0, 10);
+    camera.position.set(0, 0, 5);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -47,10 +47,6 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         scene.add(gltf.scene);
-
-        gltf.scene.traverse(function (child) {
-            if (child.isSkinnedMesh) child.castShadow = true;
-        });
     });
 
     //
