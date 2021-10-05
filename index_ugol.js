@@ -56,7 +56,7 @@ function init() {
     // renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    const controls = new OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
     controls.minDistance = 5;
     controls.maxDistance = 50;
