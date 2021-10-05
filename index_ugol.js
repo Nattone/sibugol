@@ -1,4 +1,4 @@
-let mixer, camera, scene, renderer, clock;
+let camera, scene, renderer;
 
 init();
 render();
@@ -13,8 +13,6 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
     scene.fog = new THREE.Fog(0xa0a0a0, 70, 100);
-
-    clock = new THREE.Clock();
 
     // ground
     const geometry = new THREE.PlaneGeometry(500, 500);
@@ -57,10 +55,6 @@ function init() {
             if (child.isSkinnedMesh) child.castShadow = true;
 
         });
-
-        mixer = new THREE.AnimationMixer(gltf.scene);
-        mixer.clipAction(gltf.animations[0]).play();
-
     });
 
     //
