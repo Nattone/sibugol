@@ -58,7 +58,7 @@ function init() {
     controls.minDistance = 5;
     controls.maxDistance = 50;
 
-    controls = new OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.listenToKeyEvents(window); // optional
 
     controls.addEventListener('change', render); // call this only in static scenes (i.e., if there is no animation loop)
