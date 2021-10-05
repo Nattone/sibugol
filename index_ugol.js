@@ -9,7 +9,7 @@ function init() {
     document.body.appendChild(container);
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    camera.position.set(18, 6, 18);
+    camera.position.set(0, 0, 0);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xa0a0a0);
@@ -23,7 +23,7 @@ function init() {
     const material = new THREE.MeshPhongMaterial({ color: 0x999999, depthWrite: false });
 
     const ground = new THREE.Mesh(geometry, material);
-    ground.position.set(0, 0, 0);
+    ground.position.set(0, - 5, 0);
     ground.rotation.x = - Math.PI / 2;
     ground.receiveShadow = true;
     scene.add(ground);
