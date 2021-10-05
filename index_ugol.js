@@ -54,10 +54,8 @@ function init() {
     // renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.minDistance = 5;
-    controls.maxDistance = 50;
 
+    // controls
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.listenToKeyEvents(window); // optional
 
@@ -73,7 +71,6 @@ function init() {
     controls.maxDistance = 500;
 
     controls.maxPolarAngle = Math.PI / 2;
-
 
     window.addEventListener('resize', onWindowResize);
 }
