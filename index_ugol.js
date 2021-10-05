@@ -74,14 +74,6 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.shadowMap.enabled = true;
     container.appendChild(renderer.domElement);
-
-    //
-
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enablePan = false;
-    controls.minDistance = 5;
-    controls.maxDistance = 50;
-
 }
 
 function animate() {
