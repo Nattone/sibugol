@@ -1,4 +1,4 @@
-let camera, scene, renderer;
+let camera, scene, renderer, controls;
 
 init();
 render();
@@ -16,8 +16,6 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         scene.add(gltf.scene);
-
-        render();
     });
 
     //
@@ -26,7 +24,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render); // use if there is no animation loop
     controls.minDistance = 2;
     controls.maxDistance = 10;
