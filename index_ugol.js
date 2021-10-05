@@ -25,9 +25,24 @@ function init() {
     container.appendChild(renderer.domElement);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enablePan = false;
-    controls.minDistance = 5;
-    controls.maxDistance = 50;
+    controls.addEventListener('change', render); // use if there is no animation loop
+    controls.minDistance = 2;
+    controls.maxDistance = 10;
+    controls.target.set(0, 0, - 0.2);
+    controls.update();
+
+    window.addEventListener('resize', onWindowResize);
+}
+
+
+
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    render();
 }
 
 function render() {
