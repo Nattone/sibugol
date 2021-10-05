@@ -15,13 +15,7 @@ function init() {
     //
     const loader = new THREE.GLTFLoader();
     loader.load('./models/DamagedHelmet/DamagedHelmet.gltf', function (gltf) {
-        gltf.scene.traverse(function (child) {
-            if (child.isMesh) {
-                roughnessMipmapper.generateMipmaps(child.material);
-            }
-        });
         scene.add(gltf.scene);
-        roughnessMipmapper.dispose();
 
         render();
     });
