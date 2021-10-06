@@ -29,6 +29,9 @@ function init() {
         animate();
     });
 
+    const light = new THREE.AmbientLight(0x404040); // soft white light
+    scene.add(light);
+
     //
     renderer = new THREE.WebGLRenderer();
     renderer.outputEncoding = THREE.sRGBEncoding;
