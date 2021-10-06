@@ -1,118 +1,40 @@
-let camera, scene, renderer, group, coal, light;
-let animation;
+//camera
+//scene - сцена
+//render
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight); // 70 - насколько широко видит камера
+const renderer = new THREE.WebGLRenderer();
 
-let direction = {
-    x: true,
-    y: true,
-    z: true,
-}
+scene.background = new THREE.Color(0x000fff); // фон для сцены
+renderer.setSize(window.innerWidth, window.innerHeight); //установка размера = текущ.ширина и текущ.высота
+document.body.appendChild(renderer.domElement); // в эл-т body вставляем рендер
+camera.position.z = 5;
 
-let deltaSpeed = 0.005;
-let defaultSpeed = {
-    x: 0.01,
-    y: 0.01,
-    z: 0.01,
-}
-let speed = {
-    x: 0.01,
-    y: 0.01,
-    z: 0.01,
-}
+const points = [ // массив точек. вектор идёт из точки 0;0 в точку 1;1
+    new THREE.Vector2(0, 0),
+    new THREE.Vector2(1, 1),
+    new THREE.Vector2(5, 4),
+]
 
-const animations = {
-    rotate: () => {
-        group.rotation.x += 0.01;
-        group.rotation.y += 0.01;
-        group.rotation.z += 0.01;
-    },
-    rotateX: () => {
-        group.rotation.x += 0.01;
-    },
-    rotateY: () => {
-        group.rotation.y += 0.01;
-    },
-    rotateZ: () => {
-        group.rotation.z += 0.01;
-    },
-    float: () => {
-        group.rotation.x += speed.x;
-        if (speed.y > defaultSpeed.y) {
-            speed.y -= deltaSpeed;
-        } else if (speed.y < defaultSpeed.y) {
-            speed.y = defaultSpeed.y;
-        }
-        group.rotation.y += speed.y;
-        group.rotation.z += speed.z;
-    },
-}
+// линия
+const material = new THREE.LineBasicMaterial({ Color: 0x00ff00 }); // материал
+const geometry = new THREE.BufferGeometry().setFromPoints(points); //геометрия линии. функция, у неё вызываем установку точек- передаём набор точек в ().
+const line = new THREE.Line(geometry, material);
+scene.add(line);
 
-init();
-render();
+// куб
+const cubeMaterial = new THREE.MeshBasicMaterial({ Color: 0x555666, envMap: [] });
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1); // передаём размеры куба 
+const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+scene.add(cube);
 
-function init() {
-    const container = document.getElementById('coal');
-
-    camera = new THREE.PerspectiveCamera(5, 300 / 300, 0.1, 20);
-    camera.position.set(0, 0, 0.2);
-
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x00ffffff);
-
-    group = new THREE.Group();
-    scene.add(group);
-
-    const loader = new THREE.GLTFLoader();
-    loader.load('./model/coal.gltf', function (gltf) {
-        coal = gltf.scene;
-        coal.position.set(0.003, -0.006, 0);
-
-        group.add(coal);
-
-        animation = animations.float;
-        animate();
-    });
-
-    light = new THREE.PointLight(0x404040, 8, 100);
-    light.position.set(-0.2, -0.1, 0.1);
-    scene.add(light);
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.physicallyCorrectLights = true;
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(300, 300);
-    container.appendChild(renderer.domElement);
-
-    document.addEventListener('click', onClickHandler);
-    window.addEventListener('wheel', onScrollHandler);
-    // window.addEventListener('resize', onWindowResize);
-}
-
-function onClickHandler() {
-    speed.y = 0.3;
-}
-
-function onScrollHandler(e) {
-    speed.y = 0.3;
-}
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    render();
-}
-
-function animate() {
+function animate() { //функция, ктр постоянно обновляет сцену (фреймы), показывает, что на ней нарисовали
     requestAnimationFrame(animate);
-    if (typeof animation == 'function') {
-        animation();
-    }
-    render();
+    renderer.render(scene, camera);
+
+    cube.rotation.x += 0.015;
+    cube.rotation.y += 0.018;
+
 }
 
-function render() {
-    renderer.render(scene, camera);
-}
+animate(); // вызов ф-ции
