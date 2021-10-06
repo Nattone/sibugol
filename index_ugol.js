@@ -6,7 +6,7 @@ render();
 function init() {
     const container = document.getElementById('ugol');
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0, 0);
 
     scene = new THREE.Scene();
@@ -27,7 +27,7 @@ function init() {
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render); // use if there is no animation loop
-    controls.minDistance = 0.2;
+    controls.minDistance = 0.3;
     controls.maxDistance = 10;
     controls.target.set(0, 0, - 0.2);
     controls.update();
