@@ -83,12 +83,17 @@ function init() {
     renderer.setSize(300, 300);
     container.appendChild(renderer.domElement);
 
-    document.addEventListener('click', onClick);
-    window.addEventListener('scroll', onClick);
+    document.addEventListener('click', onClickHandler);
+    window.addEventListener('scroll', onScrollHandler);
     // window.addEventListener('resize', onWindowResize);
 }
 
-function onClick() {
+function onClickHandler() {
+    speed.y = 0.3;
+}
+
+function onScrollHandler(e) {
+    console.log(e);
     speed.y = 0.3;
 }
 
