@@ -28,10 +28,8 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
-        object = gltf.scene;
-        var box = new THREE.Box3().setFromObject(object);
-        box.center(object.position);
-        object.position.multiplyScalar(- 1);
+        var object = new THREE.Group();
+        object.add(gltf.scene);
         scene.add(object);
         animation = animations.rotateY;
         animate();
