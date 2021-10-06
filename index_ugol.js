@@ -31,6 +31,7 @@ function init() {
 
     // const light = new THREE.AmbientLight(0x404040); // soft white light
     // scene.add(light);
+    // 0x404040 - soft white light
     light = new THREE.PointLight(0xffffff, 10, 100);
     light.position.set(-0.1, -0.1, 0.2);
     scene.add(light);
