@@ -38,7 +38,7 @@ function Coal() {
 
         this.light = new THREE.PointLight(0x404040, 8, 100);
         this.light.position.set(-0.2, -0.1, 0.1);
-        this.scene.add(light);
+        this.scene.add(this.light);
 
         this.renderer = new THREE.WebGLRenderer();
         this.renderer.outputEncoding = THREE.sRGBEncoding;
