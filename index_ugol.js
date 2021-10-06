@@ -36,9 +36,9 @@ function init() {
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         coal = gltf.scene;
-        coal.position = { x: 0.003, y: -0.006, z: 0 };
-
         group.add(coal);
+
+        coal.position = { x: 0.003, y: -0.006, z: 0 };
 
         animation = animations.rotate;
         animate();
