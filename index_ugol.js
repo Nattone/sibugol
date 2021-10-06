@@ -52,7 +52,7 @@ function init() {
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.physicallyCorrectLights = true;
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(300, 300);
     container.appendChild(renderer.domElement);
 
     window.addEventListener('resize', onWindowResize);
