@@ -39,7 +39,7 @@ const animations = {
         if (speed.y > defaultSpeed.y) {
             speed.y -= deltaSpeed;
         } else if (speed.y < defaultSpeed.y) {
-            speed.y = defaultSpeed;
+            speed.y = defaultSpeed.y;
         }
         group.rotation.y += speed.y;
         group.rotation.z += speed.z;
@@ -88,7 +88,7 @@ function init() {
 }
 
 function onClick() {
-    speed = 0.04;
+    speed.y = 0.4;
 }
 
 function onWindowResize() {
