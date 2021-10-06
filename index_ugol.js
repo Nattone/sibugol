@@ -29,7 +29,10 @@ function init() {
         animate();
     });
 
-    const light = new THREE.AmbientLight(0x404040); // soft white light
+    // const light = new THREE.AmbientLight(0x404040); // soft white light
+    // scene.add(light);
+    const light = new THREE.PointLight(0xff0000, 1, 100);
+    light.position.set(50, 50, 50);
     scene.add(light);
 
     //
