@@ -2,6 +2,11 @@ let camera, scene, renderer, group, coal, light;
 let animation;
 
 const animations = {
+    rotate: () => {
+        group.rotation.x += 0.01;
+        group.rotation.y += 0.01;
+        group.rotation.z += 0.01;
+    },
     rotateX: () => {
         group.rotation.x += 0.01;
     },
@@ -35,7 +40,7 @@ function init() {
 
         group.add(coal);
 
-        animation = animations.rotateY;
+        animation = animations.rotate;
         animate();
     });
 
