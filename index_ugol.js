@@ -1,15 +1,15 @@
-let camera, scene, renderer, object, light;
+let camera, scene, renderer, group, coal, light;
 let animation;
 
 const animations = {
     rotateX: () => {
-        object.rotation.x += 0.01;
+        group.rotation.x += 0.01;
     },
     rotateY: () => {
-        object.rotation.y += 0.01;
+        group.rotation.y += 0.01;
     },
     rotateZ: () => {
-        object.rotation.z += 0.01;
+        group.rotation.z += 0.01;
     }
 }
 
@@ -25,12 +25,14 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
 
+    group = new THREE.Group();
+    scene.add(group);
+
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
-        var object = new THREE.Group();
-        object.add(gltf.scene);
-        scene.add(object);
+        coal = gltf.scene
+        group.add(coal);
         animation = animations.rotateY;
         animate();
     });
