@@ -1,5 +1,5 @@
 let camera, scene, renderer, object, light;
-let animation = function () { };
+let animation;
 
 init();
 render();
@@ -18,7 +18,7 @@ function init() {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
         object = gltf.scene;
         scene.add(object);
-        animation = animX;
+        animation = animations.rotateX;
         animate();
     });
 
@@ -45,21 +45,23 @@ function onWindowResize() {
     render();
 }
 
-function animX() {
-    object.rotation.x += 0.01;
-}
-
-function animY() {
-    object.rotation.y += 0.01;
-}
-
-function animZ() {
-    object.rotation.z += 0.01;
+const animations = {
+    rotateX: () => {
+        object.rotation.x += 0.01;
+    },
+    rotateY: () => {
+        object.rotation.y += 0.01;
+    },
+    rotateZ: () => {
+        object.rotation.z += 0.01;
+    }
 }
 
 function animate() {
     requestAnimationFrame(animate);
-    animation();
+    if (typeof animation == 'function') {
+        animation();
+    }
     render();
 }
 
