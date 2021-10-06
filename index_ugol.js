@@ -1,6 +1,24 @@
 let camera, scene, renderer, group, coal, light;
 let animation;
 
+let direction = {
+    x: true,
+    y: true,
+    z: true,
+}
+
+let deltaSpeed = 0.03;
+let defaultSpeed = {
+    x: 0.01,
+    y: 0.01,
+    z: 0.01,
+}
+let speed = {
+    x: 0.01,
+    y: 0.01,
+    z: 0.01,
+}
+
 const animations = {
     rotate: () => {
         group.rotation.x += 0.01;
@@ -15,7 +33,17 @@ const animations = {
     },
     rotateZ: () => {
         group.rotation.z += 0.01;
-    }
+    },
+    float: () => {
+        group.rotation.x += speed.x;
+        if (speed.y > defaultSpeed.y) {
+            speed.y -= deltaSpeed;
+        } else if (speed.y < defaultSpeed.y) {
+            speed.y = defaultSpeed;
+        }
+        group.rotation.y += speed.y;
+        group.rotation.z += speed.z;
+    },
 }
 
 init();
@@ -24,7 +52,7 @@ render();
 function init() {
     const container = document.getElementById('coal');
 
-    camera = new THREE.PerspectiveCamera(5, window.innerWidth / window.innerHeight, 0.1, 20);
+    camera = new THREE.PerspectiveCamera(5, 300 / 300, 0.1, 20);
     camera.position.set(0, 0, 0.2);
 
     scene = new THREE.Scene();
@@ -55,7 +83,7 @@ function init() {
     renderer.setSize(300, 300);
     container.appendChild(renderer.domElement);
 
-    window.addEventListener('resize', onWindowResize);
+    // window.addEventListener('resize', onWindowResize);
 }
 
 function onWindowResize() {
