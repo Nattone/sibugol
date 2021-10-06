@@ -7,7 +7,7 @@ let direction = {
     z: true,
 }
 
-let deltaSpeed = 0.003;
+let deltaSpeed = 0.005;
 let defaultSpeed = {
     x: 0.01,
     y: 0.01,
@@ -88,7 +88,7 @@ function init() {
 }
 
 function onClick() {
-    speed.y = 0.4;
+    speed.y = 0.3;
 }
 
 function onWindowResize() {
