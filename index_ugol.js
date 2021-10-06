@@ -20,7 +20,7 @@ function init() {
     const container = document.getElementById('coal');
 
     camera = new THREE.PerspectiveCamera(5, window.innerWidth / window.innerHeight, 0.1, 20);
-    camera.position.set(0.005, 0, 0.2);
+    camera.position.set(0, 0.005, 0.2);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
