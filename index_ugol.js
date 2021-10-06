@@ -13,30 +13,19 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
 
-    //
     const loader = new THREE.GLTFLoader();
-
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
         object = gltf.scene;
         scene.add(object);
-
-        // gltf.animations; // Array<THREE.AnimationClip>
-        // gltf.scene; // THREE.Group
-        // gltf.scenes; // Array<THREE.Group>
-        // gltf.cameras; // Array<THREE.Camera>
-        // gltf.asset; // Object
-
         animation = animX;
         animate();
     });
 
-    // 0x404040 - soft white light
     light = new THREE.PointLight(0x404040, 8, 100);
     light.position.set(-0.2, -0.1, 0.1);
     scene.add(light);
 
-    //
     renderer = new THREE.WebGLRenderer();
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.physicallyCorrectLights = true;
