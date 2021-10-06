@@ -14,21 +14,22 @@ function init() {
 
     //
     const loader = new THREE.GLTFLoader();
-    const roughnessMipmapper = new THREE.RoughnessMipmapper(renderer);
 
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
-        gltf.scene.traverse(function (child) {
-            if (child.isMesh) {
-                roughnessMipmapper.generateMipmaps(child.material);
-            }
-        });
         scene.add(gltf.scene);
-        roughnessMipmapper.dispose();
+
+        gltf.animations; // Array<THREE.AnimationClip>
+        gltf.scene; // THREE.Group
+        gltf.scenes; // Array<THREE.Group>
+        gltf.cameras; // Array<THREE.Camera>
+        gltf.asset; // Object
+
         render();
     });
 
     //
     renderer = new THREE.WebGLRenderer();
+    renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
