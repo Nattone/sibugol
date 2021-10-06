@@ -18,7 +18,7 @@ function init() {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
         object = gltf.scene;
         scene.add(object);
-        animation = animations.rotateX;
+        animation = animations.rotateY;
         animate();
     });
 
