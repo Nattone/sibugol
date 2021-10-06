@@ -1,3 +1,5 @@
+import throttle from 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/throttle.js';
+
 let camera, scene, renderer, group, coal, light;
 let animation;
 
