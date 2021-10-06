@@ -17,7 +17,7 @@ function Coal() {
         }
     }
 
-    const init = () => {
+    this.init = () => {
         const container = document.getElementById('coal');
 
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
@@ -33,7 +33,7 @@ function Coal() {
             this.object = gltf.scene;
             this.scene.add(object);
             this.animation = this.animations.rotateX;
-            animate();
+            this.animate();
         });
 
         this.light = new THREE.PointLight(0x404040, 8, 100);
@@ -56,22 +56,22 @@ function Coal() {
 
         this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-        render();
+        this.render();
     }
 
-    const animate = () => {
+    this.animate = () => {
         this.requestAnimationFrame(animate);
         if (typeof this.animation == 'function') {
             this.animation();
         }
-        render();
+        this.render();
     }
 
-    const render = () => {
+    this.render = () => {
         this.renderer.render(scene, camera);
     }
 
-    init();
+    this.init();
 }
 
 const coal = new Coal();
