@@ -1,6 +1,18 @@
 let camera, scene, renderer, object, light;
 let animation;
 
+const animations = {
+    rotateX: () => {
+        object.rotation.x += 0.01;
+    },
+    rotateY: () => {
+        object.rotation.y += 0.01;
+    },
+    rotateZ: () => {
+        object.rotation.z += 0.01;
+    }
+}
+
 init();
 render();
 
@@ -43,18 +55,6 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     render();
-}
-
-const animations = {
-    rotateX: () => {
-        object.rotation.x += 0.01;
-    },
-    rotateY: () => {
-        object.rotation.y += 0.01;
-    },
-    rotateZ: () => {
-        object.rotation.z += 0.01;
-    }
 }
 
 function animate() {
