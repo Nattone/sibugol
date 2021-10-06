@@ -148,7 +148,7 @@
     ],
     "images": [
         {
-            "uri": "1623105492_23-phonoteka_org-p-temnii-kamen-tekstura-besshovnaya-krasivo-33.jpg",
+            "uri": "texture.jpg",
             "mimeType": "image/jpeg"
         }
     ],
@@ -261,7 +261,7 @@
     "buffers": [
         {
             "byteLength": 207072,
-            "uri": "ProjectName.bin"
+            "uri": "coal.bin"
         }
     ]
 }
