@@ -14,8 +14,16 @@ function init() {
 
     //
     const loader = new THREE.GLTFLoader();
+    const roughnessMipmapper = new RoughnessMipmapper(renderer);
+
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
+        gltf.scene.traverse(function (child) {
+            if (child.isMesh) {
+                roughnessMipmapper.generateMipmaps(child.material);
+            }
+        });
         scene.add(gltf.scene);
+        roughnessMipmapper.dispose();
         render();
     });
 
