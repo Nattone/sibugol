@@ -26,7 +26,7 @@ function init() {
         // gltf.cameras; // Array<THREE.Camera>
         // gltf.asset; // Object
 
-        render();
+        animate();
     });
 
     //
