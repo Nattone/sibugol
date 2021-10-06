@@ -84,7 +84,7 @@ function init() {
     container.appendChild(renderer.domElement);
 
     document.addEventListener('click', onClickHandler);
-    window.addEventListener('scroll', onScrollHandler);
+    window.addEventListener('wheel', onScrollHandler);
     // window.addEventListener('resize', onWindowResize);
 }
 
