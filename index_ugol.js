@@ -28,7 +28,7 @@ function init() {
     camera.position.set(0, 0, 0.2);
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    scene.background = new THREE.Color(0x00ffffff);
 
     group = new THREE.Group();
     scene.add(group);
