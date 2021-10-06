@@ -1,5 +1,3 @@
-import throttle from 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/throttle.js';
-
 let camera, scene, renderer, group, coal, light;
 let animation;
 
@@ -86,7 +84,7 @@ function init() {
     container.appendChild(renderer.domElement);
 
     document.addEventListener('click', onClickHandler);
-    window.addEventListener('wheel', throttle(onScrollHandler, 200));
+    window.addEventListener('wheel', onScrollHandler);
     // window.addEventListener('resize', onWindowResize);
 }
 
@@ -95,7 +93,6 @@ function onClickHandler() {
 }
 
 function onScrollHandler(e) {
-    console.log(e);
     speed.y = 0.3;
 }
 
