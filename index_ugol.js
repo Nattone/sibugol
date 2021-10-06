@@ -38,11 +38,6 @@ function init() {
     light.position.set(-0.2, -0.1, 0.1);
     scene.add(light);
 
-    const bbox = new THREE.Box3().setFromObject(object);
-    const offset = new THREE.Vector3();
-    bbox.getCenter(offset).negate();
-    childObject.position.set(offset.x, offset.y, offset.z);
-
     renderer = new THREE.WebGLRenderer();
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.physicallyCorrectLights = true;
