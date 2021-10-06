@@ -10,7 +10,7 @@ function init() {
     camera.position.set(0, 0, 0);
 
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xa0a0a0);
+    scene.background = new THREE.Color(0xffffff);
 
     //
     const loader = new THREE.GLTFLoader();
