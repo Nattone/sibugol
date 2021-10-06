@@ -4,7 +4,7 @@ function Coal() {
     this.renderer = null;
     this.object = null;
     this.light = null;
-    this.animation = function () { };
+    this.animation = null;
 
     function init() {
         const container = document.getElementById('coal');
@@ -21,7 +21,7 @@ function Coal() {
             // gltf.scene.scale.set(10.0, 10.0, 10.0);
             this.object = gltf.scene;
             this.scene.add(object);
-            this.animation = animX;
+            this.animation = this.animations.rotateX;
             animate();
         });
 
@@ -50,7 +50,9 @@ function Coal() {
 
     function animate() {
         this.requestAnimationFrame(animate);
-        this.animation();
+        if (typeof this.animation == 'function') {
+            this.animation();
+        }
         render();
     }
 
@@ -59,16 +61,18 @@ function Coal() {
     }
 
     this.animations = {
-        animX: function () {
+        rotateX: function () {
             this.object.rotation.x += 0.01;
         },
-        animY: function () {
+        rotateY: function () {
             this.object.rotation.y += 0.01;
         },
-        animZ: function () {
+        rotateZ: function () {
             this.object.rotation.z += 0.01;
         }
     }
 
     init();
 }
+
+const coal = new Coal();
