@@ -51,8 +51,8 @@ function onWindowResize() {
 
 function animate() {
     requestAnimationFrame(animate);
-    camera.rotation.x += 0.01;
-    camera.rotation.y += 0.01;
+    oject.rotation.x += 0.02;
+    oject.rotation.y += 0.01;
     render()
 }
 
