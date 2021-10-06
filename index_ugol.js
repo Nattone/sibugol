@@ -1,12 +1,23 @@
-function Coal() {
+const Coal = () => {
     this.camera = null;
     this.scene = null;
     this.renderer = null;
     this.object = null;
     this.light = null;
     this.animation = null;
+    this.animations = {
+        rotateX: () => {
+            this.object.rotation.x += 0.01;
+        },
+        rotateY: () => {
+            this.object.rotation.y += 0.01;
+        },
+        rotateZ: () => {
+            this.object.rotation.z += 0.01;
+        }
+    }
 
-    function init() {
+    const init = () => {
         const container = document.getElementById('coal');
 
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
@@ -39,7 +50,7 @@ function Coal() {
         window.addEventListener('resize', onWindowResize);
     }
 
-    function onWindowResize() {
+    const onWindowResize = () => {
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
 
@@ -48,7 +59,7 @@ function Coal() {
         render();
     }
 
-    function animate() {
+    const animate = () => {
         this.requestAnimationFrame(animate);
         if (typeof this.animation == 'function') {
             this.animation();
@@ -56,20 +67,8 @@ function Coal() {
         render();
     }
 
-    function render() {
+    const render = () => {
         this.renderer.render(scene, camera);
-    }
-
-    this.animations = {
-        rotateX: function () {
-            this.object.rotation.x += 0.01;
-        },
-        rotateY: function () {
-            this.object.rotation.y += 0.01;
-        },
-        rotateZ: function () {
-            this.object.rotation.z += 0.01;
-        }
     }
 
     init();
