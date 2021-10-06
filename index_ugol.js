@@ -1,79 +1,74 @@
-let camera, scene, renderer, object, light;
-let animation = function () { };
+function Coal() {
+    this.camera = null;
+    this.scene = null;
+    this.renderer = null;
+    this.object = null;
+    this.light = null;
+    this.animation = function () { };
 
-init();
-render();
+    function init() {
+        const container = document.getElementById('coal');
 
-function init() {
-    const container = document.getElementById('ugol');
+        this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
+        this.camera.position.set(0, 0, 0.2);
 
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
-    camera.position.set(0, 0, 0.2);
+        this.scene = new THREE.Scene();
+        this.scene.background = new THREE.Color(0xffffff);
 
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+        // load model
+        const loader = new THREE.GLTFLoader();
+        loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
+            // gltf.scene.scale.set(10.0, 10.0, 10.0);
+            this.object = gltf.scene;
+            this.scene.add(object);
+            this.animation = animX;
+            animate();
+        });
 
-    //
-    const loader = new THREE.GLTFLoader();
+        this.light = new THREE.PointLight(0x404040, 8, 100);
+        this.light.position.set(-0.2, -0.1, 0.1);
+        this.scene.add(light);
 
-    loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
-        // gltf.scene.scale.set(10.0, 10.0, 10.0);
-        object = gltf.scene;
-        scene.add(object);
+        this.renderer = new THREE.WebGLRenderer();
+        this.renderer.outputEncoding = THREE.sRGBEncoding;
+        this.renderer.physicallyCorrectLights = true;
+        this.renderer.setPixelRatio(window.devicePixelRatio);
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        container.appendChild(this.renderer.domElement);
 
-        // gltf.animations; // Array<THREE.AnimationClip>
-        // gltf.scene; // THREE.Group
-        // gltf.scenes; // Array<THREE.Group>
-        // gltf.cameras; // Array<THREE.Camera>
-        // gltf.asset; // Object
+        window.addEventListener('resize', onWindowResize);
+    }
 
-        animation = animX;
-        animate();
-    });
+    function onWindowResize() {
+        this.camera.aspect = window.innerWidth / window.innerHeight;
+        this.camera.updateProjectionMatrix();
 
-    // 0x404040 - soft white light
-    light = new THREE.PointLight(0x404040, 8, 100);
-    light.position.set(-0.2, -0.1, 0.1);
-    scene.add(light);
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    //
-    renderer = new THREE.WebGLRenderer();
-    renderer.outputEncoding = THREE.sRGBEncoding;
-    renderer.physicallyCorrectLights = true;
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    container.appendChild(renderer.domElement);
+        render();
+    }
 
-    window.addEventListener('resize', onWindowResize);
-}
+    function animate() {
+        this.requestAnimationFrame(animate);
+        this.animation();
+        render();
+    }
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    function render() {
+        this.renderer.render(scene, camera);
+    }
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    this.animations = {
+        animX: function () {
+            this.object.rotation.x += 0.01;
+        },
+        animY: function () {
+            this.object.rotation.y += 0.01;
+        },
+        animZ: function () {
+            this.object.rotation.z += 0.01;
+        }
+    }
 
-    render();
-}
-
-function animX() {
-    object.rotation.x += 0.01;
-}
-
-function animY() {
-    object.rotation.y += 0.01;
-}
-
-function animZ() {
-    object.rotation.z += 0.01;
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-    animation();
-    render();
-}
-
-function render() {
-    renderer.render(scene, camera);
+    init();
 }
