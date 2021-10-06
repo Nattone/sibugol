@@ -7,7 +7,7 @@ let direction = {
     z: true,
 }
 
-let deltaSpeed = 0.03;
+let deltaSpeed = 0.003;
 let defaultSpeed = {
     x: 0.01,
     y: 0.01,
