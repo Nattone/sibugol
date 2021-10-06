@@ -20,7 +20,7 @@ function init() {
     const container = document.getElementById('coal');
 
     camera = new THREE.PerspectiveCamera(5, window.innerWidth / window.innerHeight, 0.1, 20);
-    camera.position.set(0, 0.005, 0.2);
+    camera.position.set(0, 0, 0.2);
 
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xffffff);
@@ -30,9 +30,11 @@ function init() {
 
     const loader = new THREE.GLTFLoader();
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
-        // gltf.scene.scale.set(10.0, 10.0, 10.0);
-        coal = gltf.scene
+        coal = gltf.scene;
+        coal.position = { x: 0.003, y: -0.006, z: 0 };
+
         group.add(coal);
+
         animation = animations.rotateY;
         animate();
     });
