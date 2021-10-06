@@ -86,7 +86,19 @@
     ],
     "extensions": {
         "KHR_lights_punctual": {
-            "lights": []
+            "lights": [
+                {
+                    "name": "Point Light",
+                    "type": "point",
+                    "intensity": 0,
+                    "range": 10000,
+                    "color": [
+                        0.33725490196078434,
+                        0.3411764705882353,
+                        0.3607843137254902
+                    ]
+                }
+            ]
         }
     },
     "materials": [
