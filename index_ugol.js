@@ -16,6 +16,7 @@ function init() {
     const loader = new THREE.GLTFLoader();
 
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
+        gltf.scene.scale.set(10.0, 10.0, 10.0);
         scene.add(gltf.scene);
 
         gltf.animations; // Array<THREE.AnimationClip>
@@ -37,7 +38,7 @@ function init() {
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.addEventListener('change', render); // use if there is no animation loop
-    controls.minDistance = 0.3;
+    controls.minDistance = 1;
     controls.maxDistance = 10;
     controls.target.set(0, 0, - 0.2);
     controls.update();
