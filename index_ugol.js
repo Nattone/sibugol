@@ -14,7 +14,7 @@ function init() {
 
     //
     const loader = new THREE.GLTFLoader();
-    const roughnessMipmapper = new RoughnessMipmapper(renderer);
+    const roughnessMipmapper = new THREE.RoughnessMipmapper(renderer);
 
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         gltf.scene.traverse(function (child) {
