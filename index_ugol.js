@@ -68,7 +68,7 @@ function init() {
 
         group.add(coal);
 
-        animation = animations.rotate;
+        animation = animations.float;
         animate();
     });
 
@@ -83,7 +83,12 @@ function init() {
     renderer.setSize(300, 300);
     container.appendChild(renderer.domElement);
 
+    document.addEventListener('click', onClick);
     // window.addEventListener('resize', onWindowResize);
+}
+
+function onClick() {
+    speed = 0.04;
 }
 
 function onWindowResize() {
