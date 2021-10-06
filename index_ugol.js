@@ -5,7 +5,7 @@ init();
 render();
 
 function init() {
-    const container = document.getElementById('ugol');
+    const container = document.getElementById('coal');
 
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20);
     camera.position.set(0, 0, 0.2);
