@@ -16,7 +16,7 @@ function init() {
     const loader = new THREE.GLTFLoader();
 
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
-        // gltf.scene.scale.set( 10.0, 10.0, 10.0 );
+        gltf.scene.scale.set(10.0, 10.0, 10.0);
         scene.add(gltf.scene);
 
         gltf.animations; // Array<THREE.AnimationClip>
@@ -31,7 +31,7 @@ function init() {
     //
     renderer = new THREE.WebGLRenderer();
     renderer.outputEncoding = THREE.sRGBEncoding;
-    // renderer.physicallyCorrectLights = true;
+    renderer.physicallyCorrectLights = true;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
