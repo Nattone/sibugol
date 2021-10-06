@@ -1,4 +1,4 @@
-const Coal = () => {
+function Coal() {
     this.camera = null;
     this.scene = null;
     this.renderer = null;
