@@ -1,4 +1,4 @@
-let camera, scene, renderer, controls;
+let camera, scene, renderer;
 
 init();
 render();
@@ -19,11 +19,11 @@ function init() {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
         scene.add(gltf.scene);
 
-        gltf.animations; // Array<THREE.AnimationClip>
-        gltf.scene; // THREE.Group
-        gltf.scenes; // Array<THREE.Group>
-        gltf.cameras; // Array<THREE.Camera>
-        gltf.asset; // Object
+        // gltf.animations; // Array<THREE.AnimationClip>
+        // gltf.scene; // THREE.Group
+        // gltf.scenes; // Array<THREE.Group>
+        // gltf.cameras; // Array<THREE.Camera>
+        // gltf.asset; // Object
 
         render();
     });
@@ -35,13 +35,6 @@ function init() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
-
-    // controls = new THREE.OrbitControls(camera, renderer.domElement);
-    // controls.addEventListener('change', render); // use if there is no animation loop
-    // controls.minDistance = 0.2;
-    // controls.maxDistance = 1;
-    // controls.target.set(0, 0, 0);
-    // controls.update();
 
     window.addEventListener('resize', onWindowResize);
 }
