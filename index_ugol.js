@@ -1,4 +1,5 @@
 let camera, scene, renderer, object, light;
+let animation = function () { };
 
 init();
 render();
@@ -17,7 +18,7 @@ function init() {
 
     loader.load('./models/ugol_origin/Project Name.gltf', function (gltf) {
         // gltf.scene.scale.set(10.0, 10.0, 10.0);
-        object = gltf.scene
+        object = gltf.scene;
         scene.add(object);
 
         // gltf.animations; // Array<THREE.AnimationClip>
@@ -26,6 +27,7 @@ function init() {
         // gltf.cameras; // Array<THREE.Camera>
         // gltf.asset; // Object
 
+        animation = animX;
         animate();
     });
 
@@ -54,11 +56,23 @@ function onWindowResize() {
     render();
 }
 
-function animate() {
-    requestAnimationFrame(animate);
-    object.rotation.x += 0.02;
+function animX() {
+    object.rotation.x += 0.01;
+    render();
+}
+
+function animY() {
     object.rotation.y += 0.01;
-    render()
+    render();
+}
+
+function animZ() {
+    object.rotation.z += 0.01;
+    render();
+}
+
+function animate() {
+    requestAnimationFrame(animation);
 }
 
 function render() {
